@@ -10,17 +10,17 @@ var HomePrototype;
 function Home(props, context) {
     React.Component.call(this, props, context);
 }
-inherits(Home, React.Component);
+React.Component.extend(Home, "Home");
 HomePrototype = Home.prototype;
 
 HomePrototype.render = function() {
-    return (
-        React.createElement(Layout, null,
-            React.createElement(Wrapper, null,
-                React.createElement("h1", null, "Home")
-            )
-        )
-    );
+    return <Layout >
+        <
+        Wrapper >
+        <
+        h1 > Home < /h1> < /
+    Wrapper > <
+        /Layout>;
 };
 
 

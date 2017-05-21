@@ -20,7 +20,7 @@ var LINKS = [{
 function Header(props, context) {
     React.Component.call(this, props, context);
 }
-inherits(Header, React.Component);
+React.Component.extend(Header, "Header");
 HeaderPrototype = Header.prototype;
 
 HeaderPrototype.getStyles = function() {
@@ -37,30 +37,29 @@ HeaderPrototype.getStyles = function() {
 HeaderPrototype.render = function() {
     var styles = this.getStyles();
 
-    return (
-        React.createElement(Wrapper, {
-                className: "Header"
-            },
-            React.createElement("ul", {
-                    style: styles.ul
-                },
-                arrayMap(LINKS, function each(link) {
-                    return (
-                        React.createElement("li", {
-                                key: link.key,
-                                style: styles.li
-                            },
-                            React.createElement("a", {
-                                    href: link.href
-                                },
-                                "nav." + link.key
-                            )
-                        )
-                    );
-                })
-            )
-        )
-    );
+    return <Wrapper className = "Header" >
+        <
+        ul style = {
+            styles.ul
+        } > {
+            arrayMap(LINKS, function each(link) {
+                return <li key = {
+                    link.key
+                }
+                style = {
+                        styles.li
+                    } >
+                    <
+                    a href = {
+                        link.href
+                    } > {
+                        "nav." + link.key
+                    } < /a> < /
+                li > ;
+            })
+        } <
+        /ul> < /
+    Wrapper > ;
 };
 
 

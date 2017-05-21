@@ -10,7 +10,7 @@ var AppPrototype;
 function App(props, context) {
     React.Component.call(this, props, context);
 }
-inherits(App, React.Component);
+React.Component.extend(App, "App");
 AppPrototype = App.prototype;
 
 AppPrototype.render = function() {
@@ -18,23 +18,9 @@ AppPrototype.render = function() {
         Component = app.getView(state);
 
     if (Component) {
-        return (
-            React.createElement("div", {
-                    key: "app",
-                    className: "App"
-                },
-                React.createElement(Component, null)
-            )
-        );
+        return <Component / > ;
     } else {
-        return (
-            React.createElement("div", {
-                    key: "app",
-                    className: "App"
-                },
-                React.createElement("p", null, "ERROR")
-            )
-        );
+        return <p > ERROR < /p>;
     }
 };
 

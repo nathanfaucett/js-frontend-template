@@ -9,7 +9,7 @@ var WrapperPrototype;
 function Wrapper(props, context) {
     React.Component.call(this, props, context);
 }
-inherits(Wrapper, React.Component);
+React.Component.extend(Wrapper, "Wrapper");
 WrapperPrototype = Wrapper.prototype;
 
 WrapperPrototype.getStyles = function() {
@@ -26,14 +26,16 @@ WrapperPrototype.render = function() {
     var styles = this.getStyles(),
         props = this.props;
 
-    return (
-        React.createElement("div", {
-                className: "Wrapper" + (props.className ? " " + props.className : ""),
-                style: extend(styles.root, props.style)
-            },
+    return <div
+    className = {
+        "Wrapper" + (props.className ? " " + props.className : "")
+    }
+    style = {
+            extend(styles.root, props.style)
+        } > {
             this.props.children
-        )
-    );
+        } <
+        /div>;
 };
 
 

@@ -10,17 +10,17 @@ var NotFoundPrototype;
 function NotFound(props, context) {
     React.Component.call(this, props, context);
 }
-inherits(NotFound, React.Component);
+React.Component.extend(NotFound, "NotFound");
 NotFoundPrototype = NotFound.prototype;
 
 NotFoundPrototype.render = function() {
-    return (
-        React.createElement(Layout, null,
-            React.createElement(Wrapper, null,
-                React.createElement("h1", null, "404 - Not Found")
-            )
-        )
-    );
+    return <Layout >
+        <
+        Wrapper >
+        <
+        h1 > 404 - Not Found < /h1> < /
+    Wrapper > <
+        /Layout>;
 };
 
 

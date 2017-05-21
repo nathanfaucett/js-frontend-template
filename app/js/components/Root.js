@@ -12,7 +12,7 @@ var Provider = ReactRedux.Provider,
 function Root(props, context) {
     React.Component.call(this, props, context);
 }
-inherits(Root, React.Component);
+React.Component.extend(Root, "Root");
 RootPrototype = Root.prototype;
 
 Root.propTypes = {
@@ -27,13 +27,13 @@ Root.propTypes = {
 };
 
 RootPrototype.render = function() {
-    return (
-        React.createElement(Provider, {
-                store: this.props.store
-            },
-            React.createElement(App, null)
-        )
-    );
+    return <Provider store = {
+            this.props.store
+        } >
+        <
+        App / >
+        <
+        /Provider>;
 };
 
 

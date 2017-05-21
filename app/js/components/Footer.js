@@ -9,15 +9,13 @@ var FooterPrototype;
 function Footer(props, context) {
     React.Component.call(this, props, context);
 }
-inherits(Footer, React.Component);
+React.Component.extend(Footer, "Footer");
 FooterPrototype = Footer.prototype;
 
 FooterPrototype.render = function() {
-    return (
-        React.createElement(Wrapper, {
-            className: "Footer"
-        })
-    );
+    return <Wrapper className = "Footer" >
+        Footer <
+        /Wrapper>;
 };
 
 

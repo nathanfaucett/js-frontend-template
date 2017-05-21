@@ -4,24 +4,24 @@ var React = require("react"),
     Layout = require("./Layout");
 
 
-var HomePrototype;
+var PrivatePrototype;
 
 
-function Home(props, context) {
+function Private(props, context) {
     React.Component.call(this, props, context);
 }
-inherits(Home, React.Component);
-HomePrototype = Home.prototype;
+React.Component.extend(Private, "Private");
+PrivatePrototype = Private.prototype;
 
-HomePrototype.render = function() {
-    return (
-        React.createElement(Layout, null,
-            React.createElement(Wrapper, null,
-                React.createElement("h1", null, "Private")
-            )
-        )
-    );
+PrivatePrototype.render = function() {
+    return <Layout >
+        <
+        Wrapper >
+        <
+        h1 > Private < /h1> < /
+    Wrapper > <
+        /Layout>;
 };
 
 
-module.exports = Home;
+module.exports = Private;

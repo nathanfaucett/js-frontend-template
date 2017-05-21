@@ -25,7 +25,7 @@ function SignIn(props, context) {
         _this.props.submit();
     };
 }
-inherits(SignIn, React.Component);
+React.Component.extend(SignIn, "SignIn");
 SignInPrototype = SignIn.prototype;
 
 SignInPrototype.componentDidUpdate = function() {
@@ -34,26 +34,52 @@ SignInPrototype.componentDidUpdate = function() {
     }
 };
 
+SignInPrototype.getStyles = function() {
+    return {
+        root: {
+            margin: "0px auto",
+            maxWidth: "480px"
+        },
+        input: {
+            padding: "8px",
+            borderBottom: "1px solid black",
+            marginBottom: "16px"
+        },
+        submit: {
+            padding: "8px",
+            background: "#aaa"
+        }
+    }
+};
+
 SignInPrototype.render = function() {
-    var props = this.props;
+    var props = this.props,
+        styles = this.getStyles();
 
     return (
         React.createElement(Layout, null,
             React.createElement(Wrapper, null,
-                React.createElement("input", {
-                    onChange: this.onEmailChange,
-                    value: props.email,
-                    type: "email"
-                }),
-                React.createElement("input", {
-                    onChange: this.onPasswordChange,
-                    value: props.password,
-                    type: "password"
-                }),
-                React.createElement("input", {
-                    onClick: this.onSubmit,
-                    type: "submit"
-                })
+                React.createElement("div", {
+                        style: styles.root
+                    },
+                    React.createElement("input", {
+                        style: styles.input,
+                        onChange: this.onEmailChange,
+                        value: props.email,
+                        type: "email"
+                    }),
+                    React.createElement("input", {
+                        style: styles.input,
+                        onChange: this.onPasswordChange,
+                        value: props.password,
+                        type: "password"
+                    }),
+                    React.createElement("input", {
+                        style: styles.submit,
+                        onClick: this.onSubmit,
+                        type: "submit"
+                    })
+                )
             )
         )
     );

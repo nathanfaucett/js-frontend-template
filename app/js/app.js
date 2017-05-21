@@ -1,5 +1,6 @@
 var environment = require("@nathanfaucett/environment"),
     eventListener = require("@nathanfaucett/event_listener"),
+    cookies = require("@nathanfaucett/cookies"),
     page = require("@nathanfaucett/page"),
     request = require("@nathanfaucett/request"),
     layers = require("@nathanfaucett/layers_browser"),
@@ -78,11 +79,15 @@ objectForEach(reducers, function(reducer, name) {
 
 app.store = redux.createStore(
     redux.combineReducers(reducers),
-    initialState,
+    cookies.get("APP_STATE") || initialState,
     reduxDevtoolsExtension.composeWithDevTools(
         apply(redux.applyMiddleware, storeMiddleware)
     )
 );
+
+app.store.subscribe(function onDispatch() {
+    cookies.set("APP_STATE", app.store.getState());
+});
 
 eventListener.on(window, "resize orientationchange", function onResize() {
     app.store.dispatch({

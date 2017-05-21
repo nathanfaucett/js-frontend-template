@@ -10,19 +10,20 @@ var LayoutPrototype;
 function Layout(props, context) {
     React.Component.call(this, props, context);
 }
-inherits(Layout, React.Component);
+React.Component.extend(Layout, "Layout");
 LayoutPrototype = Layout.prototype;
 
 LayoutPrototype.render = function() {
-    return (
-        React.createElement("div", {
-                className: "Layout"
-            },
-            React.createElement(Header, null),
-            React.createElement("div", null, this.props.children),
-            React.createElement(Footer, null)
-        )
-    );
+    return <div className = "Layout" >
+        <
+        Header / >
+        <
+        div > {
+            this.props.children
+        } < /div> <
+    Footer / >
+        <
+        /div>;
 };
 
 

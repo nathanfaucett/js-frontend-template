@@ -3,6 +3,8 @@ var defaults = require("./default"),
 
 
 module.exports = {
+    out: defaults.app,
+
     ejs_src: path.join(defaults.app, "index.ejs"),
     ejs_out: path.join(defaults.app, "index.html"),
 

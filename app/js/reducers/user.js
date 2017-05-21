@@ -16,6 +16,7 @@ function user(state, action) {
     switch (action.type) {
 
         case actions.GET_SUCCESS:
+
             return extend({}, state, {
                 email: action.user.email
             });

@@ -5,14 +5,14 @@ var vfs = require("vinyl-fs"),
     config = require("./config/application");
 
 
-task("jshint", "run jshint", require("./config/tasks/jshint")(config));
+task("eslint", "run eslint", require("./config/tasks/eslint")(config));
 task("jsbeautifier", "run jsbeautifier", require("./config/tasks/jsbeautifier")(config));
 
-task("default", task.series(task("jsbeautifier"), task("jshint")));
+task("default", task.series(task("jsbeautifier"), task("eslint")));
 
 
 task("config", "compile config to build directory", require("./config/tasks/config")(config));
-task("js", "compile js into one file", task.series(task("config"), require("./config/tasks/compile_js")(config)));
+task("js", "use webpack to compile js", task.series(task("config"), require("./config/tasks/webpack")(config)));
 
 task("css", "compile css into one file", require("./config/tasks/compile_css")(config));
 task("ejs", "compile ejs into one file", require("./config/tasks/ejs")(config));
